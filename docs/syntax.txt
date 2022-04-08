@@ -1,0 +1,36 @@
+<program>: <bin-func>+
+
+<bin-func>: if <expr> then <bin-func>+ (else <bin-func>+)? end
+          | while <expr> then <bin-func>+ end
+          | input <var-chars>
+          | print <expr>
+          | return <expr>
+          | <var-chars> '=' 
+          | break
+          | <expr>
+
+<expr>: <expr> \+ <expr>
+      | <expr> - <expr>
+      | <expr> \* <expr>
+      | <expr> / <expr>
+      | <expr> \^ <expr>
+      | <expr> % <expr>
+      | <expr> != <expr>
+      | <expr> == <expr>
+      | <expr> < <expr>
+      | <expr> > <expr>
+      | <expr> <= <expr>
+      | <expr> >= <expr>
+      | \( <expr> \)
+      | " <string> "
+      | ' <string> '
+      | <number>
+      | <bool>
+
+<var-chars>: [a-zA-Z]+[a-zA-Z0-9]*
+<string>: .+
+<number>: <float>
+        | <int>
+<float>: [0-9]+\.[0-9]+
+<int>: [0-9]+
+<bool>: true | false
